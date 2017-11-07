@@ -3,31 +3,32 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
+    <%= form_for(@user, url: signup_path) do |f| %>
         <%= render 'shared/error_messages' %>
 
         <%= f.label :name %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, class: 'form-control' %>
 
         <%= f.label :email %>
-        <%= f.email_field :email %>
+        <%= f.email_field :email, class: 'form-control' %>
 
-        <label>Gender</label>
 
-        <div class="radio">
-          <label> <%= f.radio_button :gender, "male", :checked => true %> Male</label><br>
-          <label> <%= f.radio_button :gender, "female" %> Female</label>
-        </div>
+        <%= label :"user_gender", "male" %>
+        <%= f.radio_button :gender, 'male', :checked => true %>
+        <%= label :"user_gender", "female" %>
+        <%= f.radio_button :gender, 'female' %>
 
-        <label>Birth</label>
-          <%= f.date_select :birth, :start_year => 1970 %>
+
+        <%= f.label :dob, "Date of birth"%>
+        <%= f.date_select :dob, class: 'form-control' %>
+
         <%= f.label :password %>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, class: 'form-control' %>
 
         <%= f.label :password_confirmation, "Confirmation" %>
-        <%= f.password_field :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
 
         <%= f.submit "Create my account", class: "btn btn-primary" %>
-    <% end %>or
+    <% end %>
   </div>
 </div>
